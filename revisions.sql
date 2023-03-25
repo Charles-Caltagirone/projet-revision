@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : jeu. 23 mars 2023 à 09:03
+-- Généré le : sam. 25 mars 2023 à 01:32
 -- Version du serveur : 8.0.31
 -- Version de PHP : 8.0.26
 
@@ -33,80 +33,38 @@ CREATE TABLE IF NOT EXISTS `articles` (
   `article` text NOT NULL,
   `id_utilisateur` int NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=114 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=143 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Déchargement des données de la table `articles`
 --
 
 INSERT INTO `articles` (`id`, `article`, `id_utilisateur`) VALUES
-(63, 'test string cat', 15),
-(62, 'test string cat', 15),
-(61, 'test string cat', 15),
-(60, 'encore test', 15),
-(59, 'plusieurs test cat', 15),
-(58, 'plusieurs test cat', 15),
-(56, 'plusieurs test cat', 15),
-(57, 'plusieurs test cat', 15),
-(54, 'plusieurs test cat', 15),
-(55, 'plusieurs test cat', 15),
-(53, 'catereeeeeeeeere', 15),
-(52, 'catereeeeeeeeere', 15),
-(51, '', 15),
-(50, 'test cattttttttt', 15),
-(49, 'je suis un poète', 15),
-(48, 'quel joli article', 15),
-(47, 'test article', 15),
-(64, 'test string cat', 15),
-(65, 'test string cat', 15),
-(66, 'test string cat', 15),
-(67, 'test string cat', 15),
-(68, 'allez nouveau test', 15),
-(69, 'allez nouveau test', 15),
-(70, 'allez nouveau test', 15),
-(71, 'allez nouveau test', 15),
-(72, 'allez nouveau test', 15),
-(73, 'popopopopoooooooo', 15),
-(74, 'une seule cat', 15),
-(75, 'une seule cat', 15),
-(76, 'une seule cat', 15),
-(77, 'une seule cat', 15),
-(78, 'une seule cat', 15),
-(79, 'une seule cat', 15),
-(80, 'une seule cat', 15),
-(81, 'une seule cat', 15),
-(82, 'une seule cat', 15),
-(83, 'une seule cat', 15),
-(84, 'une seule cat', 15),
-(85, 'une seule cat', 15),
-(86, 'une seule cat', 15),
-(87, 'une seule cat', 15),
-(88, 'une seule cat', 15),
-(89, 'une seule cat', 15),
-(90, 'une seule cat', 15),
-(91, 'une seule cat', 15),
-(92, '', 15),
-(93, 'TEST ID CATegorie', 15),
-(94, 'on reteste', 15),
-(95, 'on reteste', 15),
-(96, 'ijnvhyf', 15),
-(97, 'ijnvhyf', 15),
-(98, 'testrrrrr', 15),
-(99, 'test count', 15),
-(100, 'test count', 15),
-(101, 'test count', 15),
-(102, 'test count', 15),
-(103, 'test count', 15),
-(104, 'test count', 15),
-(105, 'test count', 15),
-(106, 'test count', 15),
-(107, 'test', 15),
-(108, 'test', 15),
-(109, 'nouveau test cat', 15),
-(110, 'test tabelau cat', 15),
-(111, 'test tabelau cat', 15),
-(112, 'TEST ID CAT ', 15),
-(113, 'un seul article mais 2 cat', 15);
+(142, 'test article ', 21),
+(118, '', 18),
+(119, 'test', 18),
+(120, 'test', 18),
+(121, '', 18),
+(122, 'zrtez', 18),
+(123, 'zrtez', 18),
+(124, 'zrtez', 18),
+(125, 'zrtez', 18),
+(126, 'zrtez', 18),
+(127, 'zrtez', 18),
+(128, 'zrtez', 18),
+(129, 'zrtez', 18),
+(130, 'zrtez', 18),
+(131, 'zrtez', 18),
+(132, 'zrtez', 18),
+(133, 'zrtez', 18),
+(134, 'zrtez', 18),
+(135, 'zrtez', 18),
+(136, '', 18),
+(137, '', 18),
+(138, '', 18),
+(139, '', 18),
+(140, 'test article else', 18),
+(141, 'If you just see a blank page instead of an error reporting and you have no server access so you can\'t edit php configuration files like php.ini try this:\r\n\r\n- create a new file in which you include the faulty script:\r\n\r\n<?php\r\n error_reporting(E_ALL);\r\n ini_set(\"display_errors\", 1);\r\n include(\"file_with_errors.php\");\r\n?>\r\n\r\n- execute this file instead of the faulty script file\r\n\r\nnow errors of your faulty script should be reported.\r\nthis works fine with me. hope it solves your problem as well!', 19);
 
 -- --------------------------------------------------------
 
@@ -143,7 +101,7 @@ CREATE TABLE IF NOT EXISTS `liaison` (
   `id_article` int NOT NULL,
   `id_categorie` int NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=59 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=75 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Déchargement des données de la table `liaison`
@@ -207,7 +165,23 @@ INSERT INTO `liaison` (`id`, `id_article`, `id_categorie`) VALUES
 (55, 112, 3),
 (56, 112, 4),
 (57, 113, 2),
-(58, 113, 4);
+(58, 113, 4),
+(59, 114, 2),
+(60, 114, 3),
+(61, 114, 4),
+(62, 115, 1),
+(63, 115, 2),
+(64, 116, 1),
+(65, 116, 2),
+(66, 117, 1),
+(67, 117, 2),
+(68, 120, 1),
+(69, 139, 3),
+(70, 140, 3),
+(71, 140, 4),
+(72, 141, 4),
+(73, 142, 3),
+(74, 142, 4);
 
 -- --------------------------------------------------------
 
@@ -224,21 +198,17 @@ CREATE TABLE IF NOT EXISTS `utilisateurs` (
   `firstname` varchar(255) NOT NULL,
   `lastname` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Déchargement des données de la table `utilisateurs`
 --
 
 INSERT INTO `utilisateurs` (`id`, `login`, `password`, `email`, `firstname`, `lastname`) VALUES
-(0, 'login1', 'password1', 'email1', 'first1', 'last1'),
-(2, 'testtesttestst', 'password1', 'email1', '', ''),
-(16, 'b', 'b', 'b', 'b', 'b'),
-(17, 'z', 'z', 'z', 'z', 'z'),
-(15, 'a', 'a', 'a', 'a', 'a'),
-(14, '   ', 'zz', 'z', 'z', ''),
-(13, '  ', 'az', 'azeaze', 'zeze', 'zeaze'),
-(12, '', 'aa', 'aa', 'zz', 'aa');
+(21, 'test', 'test', 'test', 'test', 'test'),
+(20, 'b', 'b', 'b', 'b', 'b'),
+(19, 'a', 'a', 'a', 'a', 'a'),
+(18, 'log', 'pass', 'mail', 'first', 'last');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
