@@ -73,23 +73,23 @@ class User
         $newUser = $bdd->prepare("INSERT INTO utilisateurs (login, password, email, firstname, lastname) VALUES (?, ?, ?, ?, ?)");
 
         if ($this->login == null) {
-            echo 'remplir le login svp';
+            echo '⚠ remplir le login svp ⚠';
         } elseif ($this->password == null) {
-            echo 'remplir le password svp';
+            echo '⚠ remplir le password svp ⚠';
         } elseif ($this->email == null) {
-            echo "remplir l'email svp";
+            echo "⚠ remplir l'email svp ⚠";
         } elseif ($this->firstname == null) {
-            echo 'remplir le firstname svp';
+            echo '⚠ remplir le firstname svp ⚠';
         } elseif ($this->lastname == null) {
-            echo 'remplir le lastname svp';
+            echo '⚠ remplir le lastname svp ⚠';
         } elseif ($_POST['confirmPassword'] == null) {
-            echo 'remplir le confirmPassword svp';
+            echo '⚠ remplir le confirmPassword svp ⚠';
         } elseif ($_POST['confirmPassword'] == null) {
-            echo 'remplir le confirmPassword svp';
+            echo '⚠ remplir le confirmPassword svp ⚠';
         } elseif ($recupUser->rowCount() > 0) {
-            echo 'login déjà pris';
+            echo '⚠ login déjà pris ⚠';
         } elseif ($this->password != $_POST['confirmPassword']) {
-            echo 'MDP ne correspondent pas';
+            echo '⚠ MDP ne correspondent pas ⚠';
         } else {
             $newUser->execute([$this->login, $this->password, $this->email, $this->firstname, $this->lastname]);
         }
@@ -115,15 +115,15 @@ class User
         $connUser = $bdd->prepare("SELECT * FROM utilisateurs WHERE login = ? AND password = ?");
         $connUser->execute([$this->login, $this->password]);
         // $_SESSION['user'] = $connUser->fetchObject();
-        $result = $connUser->fetch(PDO::FETCH_ASSOC);
+        $result = $connUser->fetch(PDO::FETCH_OBJ);
 
         if ($result != false) {
-            $this->id = $result['id'];
-            $this->login = $result['login'];
-            $this->password = $result['password'];
-            $this->email = $result['email'];
-            $this->firstname = $result['firstname'];
-            $this->lastname = $result['lastname'];
+            $this->id = $result->id;
+            $this->login = $result->login;
+            $this->password = $result->password;
+            $this->email = $result->email;
+            $this->firstname = $result->firstname;
+            $this->lastname = $result->lastname;
 
             $_SESSION['user'] = $this;
             header('Location:connexion.php');
@@ -133,9 +133,9 @@ class User
 
 
         if ($this->login == null) {
-            echo 'remplir le login svp<br>';
+            echo '⚠ remplir le login svp ⚠<br>';
         } elseif ($this->password == null) {
-            echo 'remplir le password svp<br>';
+            echo '⚠ remplir le password svp ⚠<br>';
         } else {
             $connUser->execute([$this->login, $this->password]);
             $_SESSION['user'] = $connUser->fetch(PDO::FETCH_ASSOC);
@@ -143,15 +143,16 @@ class User
     }
     function disconnect()
     {
-        unset($_SESSION['user']);
+        session_destroy();
+        // unset($_SESSION['user']);
     }
     function isConnected()
     {
         if (isset($_SESSION['user'])) {
-            echo 'connecté';
+            echo "Vous êtes bien connecté";
             return true;
         } else {
-            echo 'disconnect';
+            echo "Vous n'êtes pas connecté";
             return false;
         }
     }

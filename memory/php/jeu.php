@@ -13,6 +13,29 @@ require('function.php');
 </head>
 
 <body>
+    <header>
+        <nav>
+            <?php require('./header.php');
+            ?>
+        </nav>
+    </header>
+    <main>
+        <div class="level">
+            <form action="" method="post">
+                <select name="level" id="">
+                    <option value="6">3 paires</option>
+                    <option value="12">6 paires</option>
+                    <option value="24">12 paires</option>
+                </select>
+                <input type="submit" name="submitLevel" id="" value="Lancer la partie">
+            </form>
+            <!-- </div> -->
+        
+            <!-- <div class="reset"> -->
+                <form action="" method="get">
+                    <button type="submit" name="reset">Reset</button>
+                </form>
+            </div>
     <div class="game">
         <?php
         if (isset($_POST['submitLevel'])) {
@@ -32,6 +55,12 @@ require('function.php');
         ?>
     </div>
     <?php
+    $_SESSION['scoreMax']= '';
+    
+    $_SESSION['score']= '';
+
+    // $_SESSION['msgFin'] = '';
+
     if (empty($_SESSION['returned'])) {
         $_SESSION['returned'] = [];
     }
@@ -80,16 +109,16 @@ require('function.php');
                 if (stateCard($newCard, $i) == true) {
                     // fonction native 'array_push, on choisie la variable ciblée, et on y insère l'élément souhaité
                     // var_dump('ON EST LAAA');
-                    array_push($_SESSION['count'], $newCard[$i]);
-                    // header('Location:jeu.php');
+                    array_push($_SESSION['count'], $newCard[$i]); 
                 }
             } elseif (count($_SESSION['count']) == 2) {
                 // var_dump("on passe par là");
-                $_SESSION['count'][0]->setState(true);
-                $_SESSION['count'][1]->setState(true);
                 if ($_SESSION['count'][0]->getImg_face_up() == $_SESSION['count'][1]->getImg_face_up()) {
                     if (isset($_SESSION['returned'])) {
+                        $_SESSION['count'][0]->setState(true);
+                        $_SESSION['count'][1]->setState(true);
                         array_push($_SESSION['returned'], $_SESSION['count']);
+                        header('Location:jeu.php');
                     } else {
                         $_SESSION['returned'] = [];
                     }
@@ -98,12 +127,10 @@ require('function.php');
                     $_SESSION['count'][1]->setState(false);
                 }
                 $_SESSION['count'] = [];
-                // header('Location:jeu.php');
             }
         } else {
             $_SESSION['count'] = [];
         }
-        // header('Location:jeu.php');
     }
 
     function stateCard($newCard, $i)
@@ -112,7 +139,6 @@ require('function.php');
             if ($_GET['click'] == $newCard[$i]->id_card) {
                 $_SESSION['nbClick'] +=1;
                 $newCard[$i]->setState(true);
-                header('location:jeu.php');
                 return true;
             }
         }
@@ -149,52 +175,66 @@ require('function.php');
 
     function endGame()
     {
+ // quand toutes les cartes sont true
+
+
         if (count($_SESSION['plateau']) == count($_SESSION['returned']) * 2 && count($_SESSION['plateau']) != 0 && count($_SESSION['returned']) != 0) {
-            echo 'BIEN joué !';
-        }
+            $_SESSION['scoreMax']=(count($_SESSION['plateau']) * 4) - (count($_SESSION['plateau']));
+            $_SESSION['score'] = (count($_SESSION['plateau']) * 4) - $_SESSION['nbClick']; //ma façon de calculer le score
+            if($_SESSION['score'] >= (count($_SESSION['plateau']) * 4) - (count($_SESSION['plateau']))){
+                echo "PERFECT !!! Tu gères ! Ton score : " .$_SESSION['score']. ".";
+            }elseif($_SESSION['score'] >= (count($_SESSION['plateau']) * 4) - ($_SESSION['nbClick']/0.8)){
+                echo "Plutôt pas mal ! Ton score : " .$_SESSION['score']. " (score max : ".$_SESSION['scoreMax'].")";
+            }elseif($_SESSION['score'] >= (count($_SESSION['plateau']) * 4) - ($_SESSION['nbClick']/2)){
+                echo "C'est bien mais peut mieux faire. Ton score : " .$_SESSION['score']. " (score max : ".$_SESSION['scoreMax'].")";
+            }else{
+                echo "T'es nul. Ton score : " .$_SESSION['score']. ". (score max : ";
+            }
+        } 
+        // var_dump($_SESSION['scoreMax']);
     }
-    ?>
+        ?>
     <br>
     <?php
+
     // var_dump($_SESSION['returned']);
     function resetGame()
     {
         if (isset($_GET['reset'])) {
-            session_unset();
-            session_destroy();
-            // unset($_GET);
+            unset($_SESSION['scoreMax']);
+            unset($_SESSION['score']);
+            // unset($_SESSION['msgFin']);
+            unset($_SESSION['returned']);
+            unset($_SESSION['nbClick']);
+            unset($_SESSION['count']);
+            unset($_SESSION['plateau']);
+            unset($_SESSION['cartes']);
+            unset($_SESSION['choiceLevel']);
+            // session_destroy();
             header('Location:jeu.php');
         }
     }
-    endGame();
-    resetGame();
     ?>
-    <div class="reset">
-        <form action="" method="get">
-            <button type="submit" name="reset">Reset</button>
-        </form>
-        <form action="" method="post">
-            <select name="level" id="">
-                <option value="6">3 paires</option>
-                <option value="12">6 paires</option>
-                <option value="24">12 paires</option>
-            </select>
-            <input type="submit" name="submitLevel" id="" value="Lancer la partie">
-        </form>
+<div class="verif">
+    <?php
+    endGame();
+    ?>
     </div>
-    <style>
-        .game {
-            display: flex;
-        }
-    </style>
+    <?php
+    resetGame();
+    // echo $_SESSION['msgFin'];
+    ?>
+</main>
 </body>
+
 <?php
+// echo $_SESSION['nbClick'];
 // var_dump($_SESSION['count']);
 // var_dump($_SESSION['plateau']);
 // var_dump(count($_SESSION['plateau']));
 // var_dump(count($_SESSION['plateau']));
 // var_dump(count($_SESSION['returned']));
-var_dump($_SESSION['nbClick']);
+// var_dump($_SESSION['nbClick']);
+// var_dump($_SESSION);
 ?>
-
 </html>

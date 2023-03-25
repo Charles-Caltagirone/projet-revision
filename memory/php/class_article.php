@@ -36,7 +36,6 @@ class Article
 
     function register($bdd)
     {
-
         $newArticle = $bdd->prepare("INSERT INTO articles (article, id_utilisateur) VALUES (?, ?)");
         $newArticle->execute([$this->article, $this->id_utilisateur]);
 
@@ -45,10 +44,12 @@ class Article
         $result = $recupInfos->fetch(PDO::FETCH_ASSOC);
         // var_dump($result);
         $newLiaison = $bdd->prepare("INSERT INTO liaison (id_article, id_categorie) VALUES (?, ?)");
-        for ($i = 0; $i < count($_POST['cat']); $i++) {
-            $newLiaison->execute([$result['id'], $_POST['cat'][$i]]);
-        }
-    }
+       
+            for ($i = 0; $i < count($_POST['cat']); $i++) {
+         $newLiaison->execute([$result['id'], $_POST['cat'][$i]]);}
+         header('Location:articles.php');             
+    
+}
     function allInfosSession($bdd)
     {
         $recupInfos = $bdd->prepare("SELECT * FROM articles INNER JOIN utilisateurs ON articles.id_utilisateur = utilisateurs.id WHERE utilisateurs.id = $this->id_utilisateur");
@@ -84,7 +85,7 @@ class Article
         return [$result, $order];
         // return $testTab;
         // echo $result;
-        var_dump($result);
+        // var_dump($result);
         // var_dump($testTab);
     }
 }

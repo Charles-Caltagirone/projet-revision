@@ -24,7 +24,12 @@ $array = $tableauArticles->allArticlesLogin($bdd);
     </header>
 
     <main>
-
+        <div class="ordre">
+            <form action="" method="GET">
+                <input type="submit" value="<?= $array[1] ?>" name="order" id="">
+            </form>
+        </div>
+<div class="articles">
         <table class="" border="1">
             <tr>
                 <th>Auteur</th>
@@ -36,18 +41,15 @@ $array = $tableauArticles->allArticlesLogin($bdd);
                 echo '<tr>';
                 echo '<td>' . $key['login'] . '</td>';
                 echo '<td>' . $key['article'] . '</td>';
-                categorie :
-                foreach() where articles.id
+                // categorie :
+                // foreach() where articles.id
                 echo '<td>' . $key['categorie'] . '</td>';
                 echo '</tr>';
             }
             // var_dump($array[0]);
             ?>
         </table>
-        <form action="" method="GET">
-            <input type="submit" value="<?= $array[1] ?>" name="order" id="">
-        </form>
-
+</div>
     </main>
 </body>
 

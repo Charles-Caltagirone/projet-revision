@@ -1,0 +1,73 @@
+
+body{
+    background-image: url(../img/background_or.jpg);
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+    }
+
+nav{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1em;
+    }
+    nav a{
+        padding: 0 10px;
+        text-decoration: none;
+        font-size: 1.5em;
+        color: white;
+        font-weight: bolder;
+    }
+    nav a:hover{
+        color: gray;
+    }
+    .game {
+        display: flex;
+        justify-content: center;
+    }
+    .level {
+        color: black;
+        display: flex;
+        margin-bottom: 1em;
+        justify-content: center;
+        /* margin: auto; */
+    }
+    .level form{
+        padding: 0 5px;
+    }
+.articles{
+    display: flex;
+    color: white;
+    justify-content: center;
+    margin: auto;
+}
+.articles table{
+    width: 60%;
+    text-align: center;
+}
+
+.ordre{
+display: flex;
+justify-content: center;
+margin-bottom: 1em;
+}
+.newArticle{
+    display: flex;
+    justify-content: center;
+}
+.profil{
+    display: flex;
+    justify-content: center;
+}
+.connexion{
+    display: flex;
+    justify-content: center;
+}
+.register{
+    display: flex;
+    justify-content: center;
+}
+.verif{
+    display: flex;
+    justify-content: center;
+}
