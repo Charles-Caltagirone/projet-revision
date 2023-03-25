@@ -1,5 +1,5 @@
 <?php
-require('user.php');
+require('./memory/php/user.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -12,7 +12,7 @@ require('user.php');
 <body>
         <header>
         <nav>
-            <?php require('header.php');
+            <?php require('./header_index.php');
             ?>
         </nav>
     </header>

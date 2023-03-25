@@ -14,7 +14,7 @@ require('user.php');
 <body>
     <header>
         <nav>
-            <?php require('header.php');
+            <?php require('./header.php');
             ?>
         </nav>
     </header>
