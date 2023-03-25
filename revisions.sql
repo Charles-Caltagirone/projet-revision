@@ -15,7 +15,7 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
+/*!40101 SET NAMES utf8mb3 */;
 
 --
 -- Base de données : `revisions`
@@ -33,7 +33,7 @@ CREATE TABLE IF NOT EXISTS `articles` (
   `article` text NOT NULL,
   `id_utilisateur` int NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=143 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=143 DEFAULT CHARSET=utf8mb3;
 
 --
 -- Déchargement des données de la table `articles`
@@ -77,7 +77,7 @@ CREATE TABLE IF NOT EXISTS `categories` (
   `id` int NOT NULL AUTO_INCREMENT,
   `categorie` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb3;
 
 --
 -- Déchargement des données de la table `categories`
@@ -101,7 +101,7 @@ CREATE TABLE IF NOT EXISTS `liaison` (
   `id_article` int NOT NULL,
   `id_categorie` int NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=75 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=75 DEFAULT CHARSET=utf8mb3;
 
 --
 -- Déchargement des données de la table `liaison`
@@ -198,7 +198,7 @@ CREATE TABLE IF NOT EXISTS `utilisateurs` (
   `firstname` varchar(255) NOT NULL,
   `lastname` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb3;
 
 --
 -- Déchargement des données de la table `utilisateurs`
